@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the beauty and history of Patna, Bihar. Explore spiritual places, historical landmarks, local cuisine, and vibrant culture.">
+  <title>Explore Patna | 2500 Years of History</title>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 4.5.2 -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Tikuli Cursor -->
+  <div id="tikuli-cursor"></div>
+  <div id="tikuli-cursor-follower"></div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-content">
+      <img src="images/logo_prev_ui.png" alt="Patna" class="loader-logo">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Patna</div>
+    </div>
+  </div>
+
+  <!-- Navigation — Ultra Premium -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#home">
+        <img src="images/logo_prev_ui.png" alt="Explore Patna" class="logo-img">
+        <div>
+          <span style="display:block;line-height:1;">Explore Patna</span>
+          <span style="font-size:0.55rem;font-weight:500;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;">Since 490 BCE</span>
+        </div>
+      </a>
+      
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars" style="font-size: 1.3rem; color: var(--primary);"></i>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto" id="mainTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"><i class="fas fa-compass"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="spiritual-tab" data-toggle="tab" href="#spiritual" role="tab"><i class="fas fa-om"></i> Spiritual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab"><i class="fas fa-landmark"></i> Historical</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="foods-tab" data-toggle="tab" href="#foods" role="tab"><i class="fas fa-utensils"></i> Foods</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="cultural-tab" data-toggle="tab" href="#cultural" role="tab"><i class="fas fa-masks-theater"></i> Culture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"><i class="fas fa-paper-plane"></i> Contact</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <div class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">
+              <i class="fas fa-moon"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="container">
+            <div class="hero-content">
+              <div class="section-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.15);">
+                <i class="fas fa-crown"></i> &nbsp; Est. 490 BCE — The Eternal City
+              </div>
+              <h1 class="hero-title">Experience <span>The Soul of Patna</span></h1>
+              <p class="hero-subtitle">Chronicles of 2,500 Years • Vibrant Traditions • Modern Pulse</p>
+              
+              <div class="tab-navigation">
+                <a href="#spiritual" class="tab-link" data-toggle="tab">
+                  <i class="fa-solid fa-om"></i> Spiritual
+                </a>
+                <a href="#historical" class="tab-link" data-toggle="tab">
+                  <i class="fa-solid fa-landmark-dome"></i> Historical
+                </a>
+                <a href="#foods" class="tab-link" data-toggle="tab">
+                  <i class="fa-solid fa-plate-wheat"></i> Flavors
+                </a>
+                <a href="#cultural" class="tab-link" data-toggle="tab">
+                  <i class="fa-solid fa-masks-theater"></i> Culture
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </section>
+
+           <!-- City Pulse Interactive Dashboard -->
+        <section class="city-pulse-section py-5">
+          <div class="container">
+            <div class="row align-items-end mb-5">
+              <div class="col-lg-8">
+                <span class="section-badge">Live Intelligence</span>
+                <h2 class="section-title">City Pulse Dashboard</h2>
+                <p class="section-subtitle">Real-time data for your perfect Patna exploration</p>
+              </div>
+              <div class="col-lg-4 text-lg-right">
+                <div id="live-clock" class="ultra-clock">00:00:00</div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <!-- Weather & AQI Card -->
+              <div class="col-lg-6 mb-4">
+                <div class="pulse-card glass-morphism">
+                  <div class="pulse-card-header">
+                    <i class="fas fa-meteor"></i>
+                    <span>Atmospheric Status</span>
+                  </div>
+                  <div class="pulse-card-body">
+                    <div class="weather-brief">
+                      <div class="temp-big">32°</div>
+                      <div class="weather-meta">
+                        <div class="condition">CLOUDY SKY</div>
+                        <div class="location"><i class="fas fa-location-dot"></i> Patna, Bihar</div>
+                      </div>
+                      <div class="weather-icon-big">
+                        <i class="fas fa-cloud-sun-ray"></i>
+                      </div>
+                    </div>
+                    <div class="aqi-meter-container mt-4">
+                      <div class="d-flex justify-content-between mb-2">
+                        <span class="font-weight-bold smallest">AQI STATUS</span>
+                        <span class="badge badge-warning">MODERATE (120)</span>
+                      </div>
+                      <div class="aqi-bar">
+                        <div class="aqi-progress" style="width: 55%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Festival Countdown Card -->
+              <div class="col-lg-6 mb-4">
+                <div class="pulse-card glass-morphism countdown-card">
+                  <div class="pulse-card-header">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Next Heritage Event</span>
+                  </div>
+                  <div class="pulse-card-body py-4">
+                    <div class="event-name">Chhath Puja 2026</div>
+                    <div class="countdown-grid mt-3" id="festival-countdown">
+                      <div class="countdown-item">
+                        <span class="days">24</span>
+                        <div class="unit">DAYS</div>
+                      </div>
+                      <div class="countdown-item">
+                        <span class="hours">12</span>
+                        <div class="unit">HRS</div>
+                      </div>
+                      <div class="countdown-item">
+                        <span class="minutes">45</span>
+                        <div class="unit">MINS</div>
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <a href="#cultural" class="btn btn-primary btn-sm rounded-pill px-4">See Festival Calendar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Find Your Vibe Quiz Section -->
+        <section class="vibe-quiz py-5">
+          <div class="container">
+            <div class="section-header text-center mb-5">
+              <span class="section-badge">Personalized Journey</span>
+              <h2 class="section-title">Find Your Patna Vibe</h2>
+              <p class="section-subtitle">Answer a quick question and we'll reveal your perfect itinerary</p>
+            </div>
+            
+            <div id="vibe-quiz-container" class="quiz-container">
+              <h4 class="font-weight-bold mb-4">What's your preferred mood for the day?</h4>
+              <div class="quiz-options">
+                <div class="quiz-option" onclick="selectVibe('spiritual')">
+                  <span>Peaceful & Divine</span>
+                  <i class="fas fa-om"></i>
+                </div>
+                <div class="quiz-option" onclick="selectVibe('historical')">
+                  <span>Intellectual & Ancient</span>
+                  <i class="fas fa-landmark-dome"></i>
+                </div>
+                <div class="quiz-option" onclick="selectVibe('foodie')">
+                  <span>Savory & Traditional</span>
+                  <i class="fas fa-bowl-food"></i>
+                </div>
+                <div class="quiz-option" onclick="selectVibe('explorer')">
+                  <span>Modern & Vibrant</span>
+                  <i class="fas fa-street-view"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+        <!-- Visitor Stories (Testimonials) -->
+        <section class="reviews-section py-5">
+          <div class="section-pattern"></div>
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">Community</span>
+              <h2 class="section-title">Traveler Stories</h2>
+            </div>
+            
+            <div class="row pt-4 justify-content-center">
+              <div class="col-lg-5 mb-4">
+                <div class="card p-5 h-100">
+                  <div class="d-flex align-items-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 60px; height: 60px; font-weight: 900; font-size: 1.2rem;">SC</div>
+                    <div>
+                      <h5 class="mb-0 font-weight-bold">Sujay Chakravarti</h5>
+                      <div class="text-warning small">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="font-italic" style="font-size: 1.1rem; color: var(--text-muted);">"The Mahavir Mandir was incredibly peaceful. The morning aarti is a must-experience! The energy in the temple is something you won't find anywhere else."</p>
+                  <div class="mt-4 text-primary font-weight-bold small text-uppercase" style="letter-spacing: 1px;">Visited March 2025</div>
+                </div>
+              </div>
+              
+              <div class="col-lg-5 mb-4">
+                <div class="card p-5 h-100">
+                  <div class="d-flex align-items-center mb-4">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 60px; height: 60px; font-weight: 900; font-size: 1.2rem;">NK</div>
+                    <div>
+                      <h5 class="mb-0 font-weight-bold">Nitish Kumar</h5>
+                      <div class="text-warning small">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="font-italic" style="font-size: 1.1rem; color: var(--text-muted);">"The Litti Chokha at local stalls was the highlight of our trip. Authentic Bihari flavors! Don't miss the street food around Boring Road - it's culinary heaven."</p>
+                  <div class="mt-4 text-primary font-weight-bold small text-uppercase" style="letter-spacing: 1px;">Visited January 2025</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <!-- Spiritual Section -->
+    <div class="tab-pane fade" id="spiritual" role="tabpanel" aria-labelledby="spiritual-tab">
+      <div class="section-pattern"></div>
+      <main class="container">
+        <div class="section-header">
+          <span class="section-badge">Divine Grace</span>
+          <h2 class="section-title">Sacred Sanctuaries</h2>
+          <p class="text-muted lead">Discover the spiritual heart of Patna where diverse faiths converge.</p>
+        </div>
+        
+        <div class="row">
+          <!-- Mahavir Mandir -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Most Revered</span>
+              <div class="card-img-wrapper">
+                <img src="images/mahavir mandir.jpeg" class="card-img-top" alt="Mahavir Mandir">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Siddhpeeth</div>
+                <h5 class="card-title">Mahavir Mandir</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-clock"></i> 5 AM - 11 PM</div>
+                  <div class="card-info-item"><i class="fas fa-location-arrow"></i> Near Junction</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">One of the holiest Hanuman temples in North India, famous for its 'Naivedyam' sweets and miraculous aura...</p>
+                </div>
+                <div class="full-text">
+                  <p>Mahavir Mandir is one of the most prominent temples dedicated to Lord Hanuman. It is visited by millions of devotees every year. The temple is world-renowned for its 'Naivedyam' laddoos prepared by experts from Tirupati.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Floating stones from Ram Setu preserved here</li>
+                    <li>Dual idols of Lord Hanuman (Sankat Mochan & Phaleron)</li>
+                    <li>Significant contribution to social service through cancer hospitals</li>
+                  </ul>
+                  <p><strong>Pro Tip:</strong> Visit during the early morning 'Aarti' for a soul-stirring experience.</p>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patan Devi -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Shakti Peeth</span>
+              <div class="card-img-wrapper">
+                <img src="images/image copy.png" class="card-img-top" alt="Patan Devi Mandir">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Ancient Roots</div>
+                <h5 class="card-title">Patan Devi Mandir</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-calendar"></i> Navratri Special</div>
+                  <div class="card-info-item"><i class="fas fa-map"></i> Patna City</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The deity after whom the city is named. It is one of the 51 Shakti Peethas of Goddess Sati...</p>
+                </div>
+                <div class="full-text">
+                  <p>Patan Devi is considered the presiding deity of Patna. The temple complex consists of 'Bari Patan Devi' and 'Chhoti Patan Devi'. It is a site of immense mythological importance.</p>
+                  <p><strong>History:</strong></p>
+                  <ul>
+                    <li>Believed to be the place where the right thigh of Goddess Sati fell</li>
+                    <li>Ancient architecture with intricately carved stone idols</li>
+                    <li>Center of Tantric and Vedic worship for centuries</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patna Sahib -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Global Pilgrimage</span>
+              <div class="card-img-wrapper">
+                <img src="images/harmandir.jpeg" class="card-img-top" alt="Takht Shri Harimandir Ji">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Birthplace</div>
+                <h5 class="card-title">Takht Shri Patna Sahib</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-sun"></i> Open 24/7</div>
+                  <div class="card-info-item"><i class="fas fa-utensils"></i> Langar Service</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The birthplace of the 10th Sikh Guru, Guru Gobind Singh Ji, and one of the five Takhts of Sikhism...</p>
+                </div>
+                <div class="full-text">
+                  <p>Takht Sri Patna Sahib was built by Maharaja Ranjit Singh to commemorate the birthplace of Guru Gobind Singh Ji. It is a stunning example of white marble architecture and spiritual serenity.</p>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ISKCON -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Modern Marvel</span>
+              <div class="card-img-wrapper">
+                <img src="images/iskon temple.jpg" class="card-img-top" alt="ISKCON Temple">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Vedic Center</div>
+                <h5 class="card-title">ISKCON Patna</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-music"></i> Kirtans</div>
+                  <div class="card-info-item"><i class="fas fa-leaf"></i> Govinda's</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The 'Sri Sri Radha Banke Bihari Ji' Mandir is a magnificent Vedic cultural center in the heart of the city...</p>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jama Masjid -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Heritage Site</span>
+              <div class="card-img-wrapper">
+                <img src="images/jama masjid.jpg" class="card-img-top" alt="Jama Masjid">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Mughal Era</div>
+                <h5 class="card-title">Jama Masjid</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-mosque"></i> Historic</div>
+                  <div class="card-info-item"><i class="fas fa-users"></i> Large Capacity</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A symbol of Islamic heritage in Patna, featuring grand domes and minarets dating back centuries...</p>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+          <!-- Panch Mukhi Hanuman (Moved inside) -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Divine View</span>
+              <div class="card-img-wrapper">
+                <img src="images/panchmukhihanuman mandir.jpeg" class="card-img-top" alt="Panch Mukhi Hanuman Mandir">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Boring Road Area</div>
+                <h5 class="card-title">Panch Mukhi Hanuman</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-gem"></i> Five-Faced Idol</div>
+                  <div class="card-info-item"><i class="fas fa-calendar"></i> Tue/Sat Special</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A unique shrine housing the powerful Panch-Mukhi (five-faced) form of Lord Hanuman, known for spiritual protection...</p>
+                </div>
+                <button class="read-more-btn mt-auto">Explore Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Historical Section -->
+    <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+      <div class="section-pattern madhubani-pattern"></div>
+      <main class="container py-5">
+        <div class="section-header text-center mb-5">
+          <span class="section-badge">Legacy of Empires</span>
+          <h2 class="section-title">The Pataliputra Timeline</h2>
+          <p class="section-subtitle">2,500 years of power, wisdom, and revolution condensed into a journey</p>
+        </div>
+
+        <!-- Heritage Timeline -->
+        <div class="heritage-timeline mb-5 p-4">
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <div class="card-label">490 BCE</div>
+              <h4 class="font-weight-bold">Foundation of Pataligrama</h4>
+              <p class="small text-muted">King Ajatashatru builds a fort near the confluence of the Ganges and Son rivers, marking the birth of a world capital.</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <div class="card-label">321 BCE</div>
+              <h4 class="font-weight-bold">The Mauryan Peak</h4>
+              <p class="small text-muted">Chandragupta Maurya and Ashoka the Great transform Pataliputra into one of the largest cities in the ancient world.</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <div class="card-label">320 CE</div>
+              <h4 class="font-weight-bold">Gupta Golden Age</h4>
+              <p class="small text-muted">The city becomes a hub of science and art. Aryabhata records astronomical marvels while teaching at Nalanda nearby.</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <div class="card-label">1541 CE</div>
+              <h4 class="font-weight-bold">Sher Shah Suri Arrival</h4>
+              <p class="small text-muted">The great Afghan ruler revives the city, renames it 'Patna', and builds the iconic mosque that still stands today.</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <div class="card-label">1786 CE</div>
+              <h4 class="font-weight-bold">The Colonial Era</h4>
+              <p class="small text-muted">The British East India Company builds the Golghar. Patna becomes a vital trade hub for opium and indigo.</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <div class="card-label">2026 CE</div>
+              <h4 class="font-weight-bold">Patna Modernity</h4>
+              <p class="small text-muted">A vibrant metropolis blending skyscrapers with stupas, ready to welcome the world with digital heritage tools.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header mt-5">
+          <span class="section-badge">Exploration</span>
+          <h2 class="section-title">Historical Landmarks</h2>
+        </div>
+        <div class="row">
+          <!-- Golghar -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">City Icon</span>
+              <div class="card-img-wrapper has-lens">
+                <img src="images/golghar.jpeg" class="card-img-top" alt="Golghar">
+                <img src="images/golghar.jpeg" class="lens-image-after" style="filter: grayscale(1) sepia(0.5);" alt="Golghar Heritage">
+                <div class="lens-label">Hover for Heritage View</div>
+              </div>
+              <div class="card-body">
+                <div class="card-label">Year 1786</div>
+                <h5 class="card-title">Golghar</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-stairs"></i> 145 Steps</div>
+                  <div class="card-info-item"><i class="fas fa-ticket"></i> ₹15 Entry</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The beehive granary that defined Patna's skyline for centuries, offering views of the GANGA and the city...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agam Kuan -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Mysterious</span>
+              <div class="card-img-wrapper">
+                <img src="images/agam kuan 1.jpeg" class="card-img-top" alt="Agam Kuan">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Mauryan Era</div>
+                <h5 class="card-title">Agam Kuan</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-water"></i> 105ft Deep</div>
+                  <div class="card-info-item"><i class="fas fa-landmark"></i> Ancient Relic</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Empersor Ashoka's legendary "Hell on Earth," this well is one of the oldest archaeological sites in India...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patna Museum -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Heritage Portal</span>
+              <div class="card-img-wrapper">
+                <img src="images/patna museum.jpg" class="card-img-top" alt="Patna Museum">
+              </div>
+              <div class="card-body">
+                <div class="card-label">State Hub</div>
+                <h5 class="card-title">Patna Museum</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-coins"></i> 50k+ Artifacts</div>
+                  <div class="card-info-item"><i class="fas fa-ticket"></i> Multi-tier Entry</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Commonly known as 'Jadu Ghar', this museum preserves the treasures of Pataliputra and Mauryan gold...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bihar Museum -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">World Class</span>
+              <div class="card-img-wrapper">
+                <img src="images/bihar museum.jpeg" class="card-img-top" alt="Bihar Museum">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Modern Marvel</div>
+                <h5 class="card-title">Bihar Museum</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-ticket"></i> ₹100 Entry</div>
+                  <div class="card-info-item"><i class="fas fa-calendar"></i> 10AM - 5PM</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A state-of-the-art museum designed by Maki & Associates, telling the story of Bihar from prehistory to today...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gandhi Maidan -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Heart of City</span>
+              <div class="card-img-wrapper">
+                <img src="images/gandhi maidan.png" class="card-img-top" alt="Gandhi Maidan">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Freedom Legacy</div>
+                <h5 class="card-title">Gandhi Maidan</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-expand"></i> 60 Acres</div>
+                  <div class="card-info-item"><i class="fas fa-monument"></i> World's Tallest Gandhi</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Historic ground that witnessed India's struggle for independence, now the hub of Patna's cultural activities...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sabhyata Dwar -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">River Gateway</span>
+              <div class="card-img-wrapper">
+                <img src="images/sabhyata.jpg" class="card-img-top" alt="Sabhyata Dwar">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Cultural Pillar</div>
+                <h5 class="card-title">Sabhyata Dwar</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-bridge"></i> Riverfront</div>
+                  <div class="card-info-item"><i class="fas fa-sun"></i> Best at Sunset</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The 'Gateway of Civilization' celebrating the glorious era of Ashoka and Chandragupta Maurya...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kargil Chowk -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Valour Pillar</span>
+              <div class="card-img-wrapper">
+                <img src="images/kargil chowk.png" class="card-img-top" alt="Kargil Chowk">
+              </div>
+              <div class="card-body">
+                <div class="card-label">War Memorial</div>
+                <h5 class="card-title">Kargil Chowk</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-flag"></i> Patriotic</div>
+                  <div class="card-info-item"><i class="fas fa-award"></i> Martyr Tribute</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A solemn memorial dedicated to the brave hearts who sacrificed their lives in the 1999 Kargil War...</p>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Maner Sharif -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Sufi Legacy</span>
+              <div class="card-img-wrapper">
+                <img src="images/maner sarif.jpeg" class="card-img-top" alt="Maner Sharif">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Mughal Gem</div>
+                <h5 class="card-title">Maner Sharif</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-mosque"></i> Sufi Shrine</div>
+                  <div class="card-info-item"><i class="fas fa-road"></i> 30km from City</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">An ancient Sufi pilgrimage site featuring exquisite Mughal architecture and the famous Maneri Ladoo...</p>
+                </div>
+                <div class="full-text">
+                  <p>Known for its beautiful tombs and spiritual aura, Maner Sharif is a prime example of early Mughal architecture in Bihar.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Badi Dargah & Chhoti Dargah</li>
+                    <li>Symmetrical carved sandstone walls</li>
+                    <li>Large geometric ritual tank</li>
+                    <li>Famous Maneri Ladoo made from pure ghee</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patna High Court -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Judiciary Hub</span>
+              <div class="card-img-wrapper">
+                <img src="images/hc.jpg" class="card-img-top" alt="Patna High Court">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Colonial Splendor</div>
+                <h5 class="card-title">Patna High Court</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-building-column"></i> Established 1916</div>
+                  <div class="card-info-item"><i class="fas fa-camera"></i> Architectural Icon</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A magnificent example of Neoclassical architecture, the High Court stands as a pillar of justice since the British era...</p>
+                </div>
+                <div class="full-text">
+                  <p>Inaugurated in 1916, this building is known for its massive columns and impressive facade, reflecting the grandeur of Pataliputra's modern evolution.</p>
+                  <p><strong>Design Insights:</strong></p>
+                  <ul>
+                    <li>Designed by architect J.F. Munnings</li>
+                    <li>Built in 4 years (1912-1916)</li>
+                    <li>Centennial celebrations held in 2016</li>
+                    <li>Key landmark on the Bailey Road corridor</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bihar Vidhan Sabha -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Legislature</span>
+              <div class="card-img-wrapper">
+                <img src="images/vidhansabha.jpeg" class="card-img-top" alt="Bihar Vidhan Sabha">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Political Epicenter</div>
+                <h5 class="card-title">Vidhan Sabha</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-scale-balanced"></i> Assembly</div>
+                  <div class="card-info-item"><i class="fas fa-landmark-dome"></i> Historic Hall</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The legislative heartbeat of Bihar, this grand complex is a witness to the state's democratic journey over decades...</p>
+                </div>
+                <div class="full-text">
+                  <p>The Bihar Legislative Assembly building is an architectural marvel of the early 20th century, serving as the platform for the state's most pivotal laws.</p>
+                  <p><strong>Visitor Notes:</strong></p>
+                  <ul>
+                    <li>Impressive white neoclassical facade</li>
+                    <li>Commemorates Bihar's separation from Bengal in 1912</li>
+                    <li>Centenary memorial column installed in 2021</li>
+                    <li>Restricted entry; best viewed from the outside for tourists</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">History Hub <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Foods Section -->
+    <div class="tab-pane fade" id="foods" role="tabpanel" aria-labelledby="foods-tab">
+      <div class="section-pattern"></div>
+      <main class="container">
+        <div class="section-header">
+          <span class="section-badge">Flavor Fusion</span>
+          <h2 class="section-title">The Bihari Kitchen</h2>
+          <p class="text-muted lead">Embark on a culinary voyage through the rustic and refined tastes of Patna.</p>
+        </div>
+        <div class="row">
+         
+          <!-- Litti Chokha -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Bihari Soul</span>
+              <div class="card-img-wrapper">
+                <img src="images/Litti-Chokha.webp" class="card-img-top" alt="Litti Chokha">
+              </div>
+              <div class="card-body">
+                <div class="card-label">The Classic</div>
+                <h5 class="card-title">Litti Chokha</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-fire"></i> Coal Roasted</div>
+                  <div class="card-info-item"><i class="fas fa-droplet"></i> Pure Ghee</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Roasted wheat balls stuffed with spiced sattu (gram flour), served with smoky eggplant mash...</p>
+                </div>
+                <div class="full-text">
+                  <p>The culinary identity of Bihar, Litti Chokha is a rustic masterpiece traditionally baked over dried cow-dung cakes for a unique smoky flavor.</p>
+                  <p><strong>The Experience:</strong></p>
+                  <ul>
+                    <li>Litti: Whole wheat dough filled with 'Sattu' (roasted gram flour)</li>
+                    <li>Chokha: A spicy mash of roasted eggplant, tomatoes, and potatoes</li>
+                    <li>Served with a generous bowl of yellow clarified butter (Ghee)</li>
+                    <li>Best enjoyed with raw onions and traditional green chutney</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Silao Khaja -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Royal Sweet</span>
+              <div class="card-img-wrapper">
+                <img src="images/khaja.webp" class="card-img-top" alt="Khaja">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Silao Special</div>
+                <h5 class="card-title">Silao Khaja</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-layer-group"></i> 52 Layers</div>
+                  <div class="card-info-item"><i class="fas fa-certificate"></i> GI Tagged</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A crisp, multi-layered delicacy that melts in your mouth, traditionally associated with Buddhist history...</p>
+                </div>
+                <div class="full-text">
+                  <p>A Geographical Indication (GI) tagged sweet from Silao, this treat consists of multiple thin sheets of dough layered and deep-fried.</p>
+                  <p><strong>Why it's Special:</strong></p>
+                  <ul>
+                    <li>Incredibly crisp yet light texture</li>
+                    <li>Slightly sweet with a hint of cardamom</li>
+                    <li>Roots dating back to the Mauryan empire</li>
+                    <li>Perfect souvenir for travelers</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chana Ghugni -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Street Legend</span>
+              <div class="card-img-wrapper">
+                <img src="images/chana ghugni.avif" class="card-img-top" alt="Chana Ghugni">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Morning Fuel</div>
+                <h5 class="card-title">Chana Ghugni</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-pepper-hot"></i> Spiced</div>
+                  <div class="card-info-item"><i class="fas fa-bread-slice"></i> With Poha</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Spicy black chickpea curry flavored with ginger and local chillies, a favorite breakfast across Bihar...</p>
+                </div>
+                <div class="full-text">
+                  <p>A protein-packed, spicy delight made from black chickpeas (Kala Chana), often served with 'Choora' (pounded rice) or 'Kachri'.</p>
+                  <p><strong>Taste Profile:</strong></p>
+                  <ul>
+                    <li>Thick, aromatic gravy with cumin and garam masala</li>
+                    <li>Topped with chopped onions, green chillies, and lemon juice</li>
+                    <li>A staple during the holy month of Ramadan for Iftar</li>
+                    <li>Available at every street corner in the mornings</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Malpua -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Festival Special</span>
+              <div class="card-img-wrapper">
+                <img src="images/malpua.jpeg" class="card-img-top" alt="Malpua">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Sweet Pancake</div>
+                <h5 class="card-title">Bihari Malpua</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-bowl-food"></i> With Rabri</div>
+                  <div class="card-info-item"><i class="fas fa-mask"></i> Holi Essential</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Fluffy, deep-fried pancakes soaked in sugar syrup, flavored with fennel and loaded with dry fruits...</p>
+                </div>
+                <div class="full-text">
+                  <p>Unlike the dry versions elsewhere, Bihari Malpua is traditionally dipped in thick sugar syrup (Chasni) and is an absolute must-have during Holi.</p>
+                  <p><strong>The Recipe:</strong></p>
+                  <ul>
+                    <li>Batter made of flour, milk, mashed bananas, and sugar</li>
+                    <li>Infused with fennel seeds (Saunf) for a refreshing aroma</li>
+                    <li>Fried until the edges are golden and crisp</li>
+                    <li>Best served with a side of cold, creamy Rabri</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tilkut -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Winter Classic</span>
+              <div class="card-img-wrapper">
+                <img src="images/tilkut.jpeg" class="card-img-top" alt="Tilkut">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Gaya Specialty</div>
+                <h5 class="card-title">Gaya Tilkut</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-snowflake"></i> Seasonal</div>
+                  <div class="card-info-item"><i class="fas fa-seedling"></i> Sesame Base</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Crunchy, pounded sesame and jaggery treats, handcrafted with precision for the perfect snap...</p>
+                </div>
+                <div class="full-text">
+                  <p>A winter staple, Tilkut from Gaya is famous for its невероятно light and crisp texture, achieved by manual pounding of sesame and jaggery.</p>
+                  <p><strong>Winter Traditions:</strong></p>
+                  <ul>
+                    <li>Hand-pounded over iron mortars for hours</li>
+                    <li>Made with high-quality sesame seeds (Til)</li>
+                    <li>Consumed primarily during Makar Sankranti</li>
+                    <li>Available in sugar (Cheni) and jaggery (Gur) varieties</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dal Pitha -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Traditional Dimsum</span>
+              <div class="card-img-wrapper">
+                <img src="images/dalpitha-enjoy.webp" class="card-img-top" alt="Dal Pitha">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Rice Flour Dumpling</div>
+                <h5 class="card-title">Bihari Dal Pitha</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-wind"></i> Steamed</div>
+                  <div class="card-info-item"><i class="fas fa-leaf"></i> Vegetarian</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The 'Bihari Momo'—steamed rice flour shells stuffed with spicy lentil paste, served with tangy chutney...</p>
+                </div>
+                <div class="full-text">
+                  <p>Often called the 'Bihari Momo', Dal Pitha is a healthy, steamed dumpling made from rice flour and stuffed with spiced Chana Dal paste.</p>
+                  <p><strong>Healthy Heritage:</strong></p>
+                  <ul>
+                    <li>Steamed, making it a low-fat, nutritious snack</li>
+                    <li>Filling seasoned with ginger, green chillies, and garlic</li>
+                    <li>Traditionally shaped into crescents or rounds</li>
+                    <li>Served hot with spicy tomato chutney or fried for extra crunch</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thekua -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Holy Offering</span>
+              <div class="card-img-wrapper">
+                <img src="images/thekua.jpeg" class="card-img-top" alt="Thekua">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Chhath Special</div>
+                <h5 class="card-title">Traditional Thekua</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-wheat-awn"></i> Whole Wheat</div>
+                  <div class="card-info-item"><i class="fas fa-vihara"></i> Sacred Prasada</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The signature 'cookie' of Bihar, deep-fried whole wheat biscuits flavored with fennel and cardamom...</p>
+                </div>
+                <div class="full-text">
+                  <p>The primary 'Maha Prasada' of the Chhath festival, Thekua is a dense, crunchy biscuit made from wheat flour, jaggery, and dry coconut.</p>
+                  <p><strong>Cultural Significance:</strong></p>
+                  <ul>
+                    <li>Traditionally made using hand-carved wooden molds</li>
+                    <li>Deep-fried in pure desi ghee for an irresistible aroma</li>
+                    <li>Symbolizes the simplicity and health of rural Bihari diet</li>
+                    <li>Can be preserved for weeks without losing its crunch</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anarsa -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Sweet Crunch</span>
+              <div class="card-img-wrapper">
+                <img src="images/anarsha.jpeg" class="card-img-top" alt="Anarsa">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Sesame Coated</div>
+                <h5 class="card-title">Patna Anarsa</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-circle-dot"></i> Sesame Rice</div>
+                  <div class="card-info-item"><i class="fas fa-bolt"></i> Rice Based</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A unique rice-based sweet coated in white sesame seeds, offering a perfect balance of soft and crunchy...</p>
+                </div>
+                <div class="full-text">
+                  <p>Anarsa is an intricate sweet made from fermented rice flour and jaggery, meticulously shaped and coated with poppy or sesame seeds.</p>
+                  <p><strong>Craftsmanship:</strong></p>
+                  <ul>
+                    <li>Requires days of rice soaking and flour preparation</li>
+                    <li>The sesame coating provides a nutty crunch to every bite</li>
+                    <li>Often filled with 'Khoya' (milk solids) for richness</li>
+                    <li>A staple during the festive season in Bihar</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Taste Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Cultural Section -->
+    <div class="tab-pane fade" id="cultural" role="tabpanel" aria-labelledby="cultural-tab">
+      <div class="section-pattern"></div>
+      <main class="container">
+        <div class="section-header">
+          <span class="section-badge">Legacy of Faith</span>
+          <h2 class="section-title">Cultural Vibrance</h2>
+          <p class="text-muted lead">Step into a world of timeless traditions and spectacular communal gatherings.</p>
+        </div>
+        <div class="row">
+          <!-- Chhath Puja -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Maha Parv</span>
+              <div class="card-img-wrapper">
+                <img src="images/chhath puja.jpeg" class="card-img-top" alt="Chhath Puja">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Sun Worship</div>
+                <h5 class="card-title">Chhath Puja</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-sun"></i> 4 Days</div>
+                  <div class="card-info-item"><i class="fas fa-water"></i> Sacred River</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Bihar's most revered festival where the city unites at the Ganges bank to worship the rising and setting sun...</p>
+                </div>
+                <div class="full-text">
+                  <p>Chhath is not just a festival; it's a divine emotion for every Bihari. It's the only Vedic festival dedicated to both the setting and rising Sun God.</p>
+                  <p><strong>The Rituals:</strong></p>
+                  <ul>
+                    <li>Nahay Khay: First day of purification</li>
+                    <li>Kharna: Second day of fasting and sweet offerings</li>
+                    <li>Sandhya Arghya: Third day of river offerings at sunset</li>
+                    <li>Usha Arghya: Final day of sunrise offerings</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sonepur Mela -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Asia's Grandest</span>
+              <div class="card-img-wrapper">
+                <img src="images/image.png" class="card-img-top" alt="Sonepur Mela">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Ancient Cattle Fair</div>
+                <h5 class="card-title">Sonepur Mela</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-horse"></i> Animal Fair</div>
+                  <div class="card-info-item"><i class="fas fa-tent"></i> Legacy</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Located across the river, this historic fair attracts global visitors for its unique animal trade and folk theater...</p>
+                </div>
+                <div class="full-text">
+                  <p>Held on Kartik Purnima, Sonepur Mela is Asia's largest cattle fair, famously known as the 'Harihar Kshetra Mela' where history and commerce meet.</p>
+                  <p><strong>Offerings:</strong></p>
+                  <ul>
+                    <li>World-famous elephant and horse trade history</li>
+                    <li>Folk theater and traditional dances</li>
+                    <li>Handicraft stalls from across India</li>
+                    <li>Thrilling amusement rides and magic shows</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diwali -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Lights & Joy</span>
+              <div class="card-img-wrapper">
+                <img src="images/diwali.jpg" class="card-img-top" alt="Diwali">
+              </div>
+              <div class="card-body">
+                <div class="card-label">The Festival of Lights</div>
+                <h5 class="card-title">Deepawali</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-fire"></i> Lamps</div>
+                  <div class="card-info-item"><i class="fas fa-gift"></i> Gifting</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Patna glows with thousands of oil lamps while the Ganges reflected fireworks creates a magical atmosphere...</p>
+                </div>
+                <div class="full-text">
+                  <p>Diwali in Patna is a sensory overload of lights, sweets, and celebration. The city's markets bustle with festive shoppers and colorful Rangolis.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Lamps reflected in the Ganges river path</li>
+                    <li>Traditional sweets from heritage shops</li>
+                    <li>Grand community firework displays</li>
+                    <li>Sacred Lakshmi-Ganesh puja ceremonies</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ram Navami -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Devotion</span>
+              <div class="card-img-wrapper">
+                <img src="images/ramnavmi.webp" class="card-img-top" alt="Ram Navami">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Mahavir Mandir Junction</div>
+                <h5 class="card-title">Ram Navami</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-flag"></i> Shobha Yatras</div>
+                  <div class="card-info-item"><i class="fas fa-om"></i> Chants</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A spectacular sight at the Mahavir Mandir for Lord Rama's birthday, with grand flag processions and community feasts...</p>
+                </div>
+                <div class="full-text">
+                  <p>A massive celebration centered around the Mahavir Mandir at Patna Junction, where over a million devotees gather for Lord Rama's birthday.</p>
+                  <p><strong>Festivities:</strong></p>
+                  <ul>
+                    <li>Grand 'Shobha Yatra' processions</li>
+                    <li>Famous 'Naivedyam' laddoos as prasada</li>
+                    <li>Helicopter flower showers over temples</li>
+                    <li>Day-long kirtans and Hanuman Chalisa recitals</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Govardhan Puja -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Faith & Feast</span>
+              <div class="card-img-wrapper">
+                <img src="images/govardhan-puja.avif" class="card-img-top" alt="Govardhan Puja">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Annakut Mahotsav</div>
+                <h5 class="card-title">Govardhan Puja</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-mountain"></i> Food Hill</div>
+                  <div class="card-info-item"><i class="fas fa-cow"></i> Gau Seva</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Marking the day after Diwali, temples create massive "Annakut" food mountains to celebrate Lord Krishna...</p>
+                </div>
+                <div class="full-text">
+                  <p>Govardhan Puja commemorates Lord Krishna lifting the Govardhan Hill to protect the people of Vrindavan from the wrath of Lord Indra.</p>
+                  <p><strong>Key Traditios:</strong></p>
+                  <ul>
+                    <li>Creation of cow-dung 'Govardhan' sculptures</li>
+                    <li>Offering 56 types of food (Annakut)</li>
+                    <li>Rituals involving cow worship (Gau Seva)</li>
+                    <li>Community feasts at Krishna temples</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Makar Sankranti -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Kite Festival</span>
+              <div class="card-img-wrapper">
+                <img src="images/makar sakranti.jpg" class="card-img-top" alt="Makar Sankranti">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Harvest Vibes</div>
+                <h5 class="card-title">Makar Sankranti</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-paper-plane"></i> Kites</div>
+                  <div class="card-info-item"><i class="fas fa-bowl-rice"></i> Chura-Dahi</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The skies of Patna fill with colorful kites while families feast on traditional seasonal treats in January...</p>
+                </div>
+                <div class="full-text">
+                  <p>Marking the sun's transition into Capricorn, this harvest festival is celebrated with sky-high kite flying competitions and cold sesame treats.</p>
+                  <p><strong>The Traditions:</strong></p>
+                  <ul>
+                    <li>Kite flying competitions at Gandhi Maidan</li>
+                    <li>Traditional meal of Chura-Dahi and Tilkut</li>
+                    <li>A holy dip in the Ganges river at dawn</li>
+                    <li>Special festivities on the sands of Diara</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Event Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Recreation Section -->
+    <div class="tab-pane fade" id="recreation" role="tabpanel" aria-labelledby="recreation-tab">
+      <div class="section-pattern"></div>
+      <main class="container">
+        <div class="section-header">
+          <span class="section-badge">Escape & Unwind</span>
+          <h2 class="section-title">Green Lungs & Riverfronts</h2>
+          <p class="text-muted lead">Discover modern parks and scenic promenades that offer a breath of fresh air.</p>
+        </div>
+        <div class="row">
+          <!-- Eco Park -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Top Rated</span>
+              <div class="card-img-wrapper">
+                <img src="images/eco-park-featured copy.jpg" class="card-img-top" alt="Eco Park">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Rajdhani Vatika</div>
+                <h5 class="card-title">Eco Park</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-ship"></i> Boating</div>
+                  <div class="card-info-item"><i class="fas fa-walking"></i> 2km Trail</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Patna's green sanctuary featuring themed gardens, a serene lake, and the city's favorite jogging tracks...</p>
+                </div>
+                <div class="full-text">
+                  <p>Commonly known as Rajdhani Vatika, Eco Park is the most vibrant green space in Patna, spread across 9 acres of meticulously landscaped gardens.</p>
+                  <p><strong>Top Activities:</strong></p>
+                  <ul>
+                    <li>Leisurely boating in the central lake</li>
+                    <li>Exploring the Rashi Van and succulent gardens</li>
+                    <li>2.5 km of dedicated jogging and walking tracks</li>
+                    <li>Kids' play zone and specialized sculpture park</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Explore <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marine Drive -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Evening Hub</span>
+              <div class="card-img-wrapper">
+                <img src="images/marine drive.jpg" class="card-img-top" alt="Ganga Path">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Patna Marine Drive</div>
+                <h5 class="card-title">JP Ganga Path</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-camera"></i> Sunset View</div>
+                  <div class="card-info-item"><i class="fas fa-burger"></i> Street Food</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A 5km high-speed riverfront expressway that has become the city's premier spot for photography and street food cravings...</p>
+                </div>
+                <div class="full-text">
+                  <p>Often compared to Mumbai's Marine Drive, the JP Ganga Path offers a high-speed transit route along the Ganges with breathtaking river views.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Stunning sunset views over the Ganges</li>
+                    <li>Vibrant food truck lane featuring local & fusion snacks</li>
+                    <li>Perfect for evening photography and cool breeze</li>
+                    <li>World-class lighting and pedestrian walkways</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Explore <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buddha Smriti Park -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Zen Space</span>
+              <div class="card-img-wrapper">
+                <img src="images/patnaa.jpg" class="card-img-top" alt="Buddha Smriti Park">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Spiritual Oasis</div>
+                <h5 class="card-title">Buddha Smriti Park</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-dharmachakra"></i> Stupa</div>
+                  <div class="card-info-item"><i class="fas fa-leaf"></i> Bodhi Tree</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A massive meditation park in the heart of the city featuring a 200ft high Karuna Stupa and museum...</p>
+                </div>
+                <div class="full-text">
+                  <p>Inaugurated by the Dalai Lama, this park is built on the site of the former historic jail and is now a symbol of peace and enlightenment.</p>
+                  <p><strong>Features:</strong></p>
+                  <ul>
+                    <li>200-feet high Karuna Stupa containing holy relics</li>
+                    <li>Patliputra Karun Sangrahlaya (Museum)</li>
+                    <li>Bodhi trees planted from Anuradhapura, Sri Lanka</li>
+                    <li>Meditation centers for spiritual seekers</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Explore <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sanjay Gandhi Biological Park -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Wildlife</span>
+              <div class="card-img-wrapper">
+                <img src="images/zoo.webp" class="card-img-top" alt="Patna Zoo">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Biological Park</div>
+                <h5 class="card-title">Patna Zoo</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-paw"></i> 800+ Animals</div>
+                  <div class="card-info-item"><i class="fas fa-tree"></i> Botanical</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">One of India's largest zoos, home to white tigers, rhinoceros, and a massive botanical garden collection...</p>
+                </div>
+                <div class="full-text">
+                  <p>Spanning over 150 acres, the Sanjay Gandhi Biological Park is the 'Green Lung' of Patna and a premier wildlife conservation center.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Famous rhinoceros breeding program</li>
+                    <li>White Tiger and Royal Bengal Tiger enclosures</li>
+                    <li>Massive Botanical Garden with medicinal plant collection</li>
+                    <li>Battery-operated vehicles and toy train for kids</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Explore <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+          <!-- Patna Planetarium -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Science Hub</span>
+              <div class="card-img-wrapper">
+                <img src="images/planetarium-patna.jpeg" class="card-img-top" alt="Patna Planetarium">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Indira Gandhi Vigyan Parisar</div>
+                <h5 class="card-title">Patna Planetarium</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-user-astronaut"></i> Sky Shows</div>
+                  <div class="card-info-item"><i class="fas fa-microchip"></i> Modern Tech</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">One of Asia's largest planetariums, offering breathtaking cosmic journeys through its advanced projection dome...</p>
+                </div>
+                <div class="full-text">
+                  <p>Inaugurated in 1993, this iconic dome-shaped structure is a prime center for astronomical education and space science exploration.</p>
+                  <p><strong>Key Wonders:</strong></p>
+                  <ul>
+                    <li>High-resolution digital sky projection</li>
+                    <li>Interactive science exhibition galleries</li>
+                    <li>Astronomy workshops for students</li>
+                    <li>Regular evening sky-watching sessions</li>
+                  </ul>
+                </div>
+                <a href="planetarium.html" class="read-more-btn mt-auto" style="text-decoration:none;color:white;">Explore <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bapu Tower -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">New Landmark</span>
+              <div class="card-img-wrapper">
+                <img src="images/bapu tower.jpg" class="card-img-top" alt="Bapu Tower">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Gardani Bagh</div>
+                <h5 class="card-title">Bapu Tower</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-dove"></i> Peace Memorial</div>
+                  <div class="card-info-item"><i class="fas fa-leaf"></i> Sustainable</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Patna's newest architectural marvel dedicated to Mahatma Gandhi, featuring a stunning copper-cladded spiral design...</p>
+                </div>
+                <div class="full-text">
+                  <p>Rising 120 feet in Gardanibagh, this tower is a state-of-the-art museum complex that chronicles the life and philosophies of Bapu through immersive technology.</p>
+                  <p><strong>Features:</strong></p>
+                  <ul>
+                    <li>120-feet tall copper spiral structure</li>
+                    <li>Interactive 3D exhibits on the Freedom Movement</li>
+                    <li>Lush landscaped gardens and reflective pools</li>
+                    <li>Auditorium for documentary screenings</li>
+                  </ul>
+                </div>
+                <a href="bapu-tower.html" class="read-more-btn mt-auto" style="text-decoration:none;color:white;">Explore <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patna Golf Club -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Elite Leisure</span>
+              <div class="card-img-wrapper">
+                <img src="images/golf club.jpg" class="card-img-top" alt="Patna Golf Club">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Colonial Legacy</div>
+                <h5 class="card-title">Patna Golf Club</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-golf-ball-tee"></i> 18-Hole Course</div>
+                  <div class="card-info-item"><i class="fas fa-tree"></i> Green Oasis</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Established in 1916, this historic 18-hole golf course offers a serene escape and elite sporting facilities...</p>
+                </div>
+                <div class="full-text">
+                  <p>Spread across vast acres near the Governor's House, the Patna Golf Club is one of the oldest and most prestigious sporting clubs in North India.</p>
+                  <p><strong>Offerings:</strong></p>
+                  <ul>
+                    <li>Professional standard 6,200-yard course</li>
+                    <li>Heritage clubhouse with luxury dining</li>
+                    <li>Regular national & regional tournaments</li>
+                    <li>Golfing academy for new players</li>
+                  </ul>
+                </div>
+                <a href="golf-club.html" class="read-more-btn mt-auto" style="text-decoration:none;color:white;">Explore <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hungama World Water Park -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Aqua Adventure</span>
+              <div class="card-img-wrapper">
+                <img src="images/hungama.jpg" class="card-img-top" alt="Hungama World">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Bihta Road</div>
+                <h5 class="card-title">Hungama World</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-water"></i> Wave Pool</div>
+                  <div class="card-info-item"><i class="fas fa-umbrella-beach"></i> Cabanas</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Dive into thrill with central Bihar's largest water park featuring wave pools, multi-lane slides, and rain dance...</p>
+                </div>
+                <a href="hungama-world.html" class="read-more-btn mt-auto" style="text-decoration:none;color:white;">Details <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="tab-pane fade" id="shopping" role="tabpanel" aria-labelledby="shopping-tab">
+      <div class="section-pattern"></div>
+      <main class="container">
+        <div class="section-header">
+          <span class="section-badge">Retail Therapy</span>
+          <h2 class="section-title">Shopping & Souvenirs</h2>
+          <p class="text-muted lead">From luxury labels to traditional handicrafts, explore Patna's vibrant marketplaces.</p>
+        </div>
+        <div class="row">
+          <!-- City Centre Mall -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Shopping Hub</span>
+              <div class="card-img-wrapper">
+                <img src="images/city centre.webp" class="card-img-top" alt="City Centre Mall">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Fraser Road</div>
+                <h5 class="card-title">City Centre Mall</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-tags"></i> Premium</div>
+                  <div class="card-info-item"><i class="fas fa-film"></i> PVR Cinemas</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Patna's premier upscale destination for international fashion brands, gourmet dining, and luxury cinema...</p>
+                </div>
+                <div class="full-text">
+                  <p>Located in the heart of the city, City Centre Mall is where Patna’s elite gather for a world-class shopping and entertainment experience.</p>
+                  <p><strong>Offerings:</strong></p>
+                  <ul>
+                    <li>International brands like Tommy Hilfiger, Calvin Klein</li>
+                    <li>State-of-the-art PVR multiplex</li>
+                    <li>Expansive food court and fine dining restaurants</li>
+                    <li>Spacious underground parking</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- P&M Mall -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Top Rated</span>
+              <div class="card-img-wrapper">
+                <img src="images/p&m mall.webp" class="card-img-top" alt="P&M Mall">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Kurji Pataliputra</div>
+                <h5 class="card-title">P&M Mall</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-bolt"></i> Trendsetter</div>
+                  <div class="card-info-item"><i class="fas fa-gamepad"></i> Game Zone</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">Owned by filmmaker Prakash Jha, this mall brought the modern shopping culture to Patna with style...</p>
+                </div>
+                <div class="full-text">
+                  <p>As the first mega-mall of Patna, P&M Mall remains a sentimental favorite for residents, offering a perfect mix of trend and tradition.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Cinepolis 4-screen multiplex</li>
+                    <li>Fashion giants like Lifestyle and Pantaloons</li>
+                    <li>Extensive entertainment zone for kids</li>
+                    <li>Popular cafes and hangout spots</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Maurya Lok -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Heritage Market</span>
+              <div class="card-img-wrapper">
+                <img src="images/maurya lok.jpg" class="card-img-top" alt="Maurya Lok">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Dak Bungalow Road</div>
+                <h5 class="card-title">Maurya Lok Complex</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-burger"></i> Food Hub</div>
+                  <div class="card-info-item"><i class="fas fa-vest-patches"></i> Local Fashion</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The legendary open-air commercial center where every Patnaite has a childhood memories of food and shopping...</p>
+                </div>
+                <div class="full-text">
+                  <p>Often called the 'CP of Patna', Maurya Lok is the city's most famous open-air shopping complex, known for its high-street fashion and legendary food stalls.</p>
+                  <p><strong>Must Experience:</strong></p>
+                  <ul>
+                    <li>Famous street food (Momos & Rolls)</li>
+                    <li>Branded showrooms and local boutiques</li>
+                    <li>Relaxed evening walks in the concourse</li>
+                    <li>Handicraft shops and book stores</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khaitan Market -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Fashion Bazaar</span>
+              <div class="card-img-wrapper">
+                <img src="images/khaitan.jpeg" class="card-img-top" alt="Khaitan Market">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Gandhi Maidan Near</div>
+                <h5 class="card-title">Khaitan Market</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-socks"></i> Wholesale</div>
+                  <div class="card-info-item"><i class="fas fa-scissors"></i> Apparel</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The go-to destination for ethnic wear and wholesale garments, offering the best deals in Bihar...</p>
+                </div>
+                <div class="full-text">
+                  <p>Khaitan Market is a sprawling underground complex known for its vast collection of sarees, suits, and wedding apparel at unbeatable prices.</p>
+                  <p><strong>Why Visit:</strong></p>
+                  <ul>
+                    <li>Best collection of traditional embroidery</li>
+                    <li>Wholesale and retail garment shops</li>
+                    <li>Highly active during wedding seasons</li>
+                    <li>Great for bargaining lovers</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centro / Mall of India -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Modern Retail</span>
+              <div class="card-img-wrapper">
+                <img src="images/centro mall.webp" class="card-img-top" alt="Centro Mall">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Exhibition Road</div>
+                <h5 class="card-title">Centro Mall</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-shirt"></i> Luxury Brands</div>
+                  <div class="card-info-item"><i class="fas fa-sparkles"></i> New Age</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">A modern retail landmark specializing in organized multi-brand outlets and contemporary fashion displays...</p>
+                </div>
+                <div class="full-text">
+                  <p>Centro offers a curated shopping experience on Exhibition Road, primarily focusing on fashion-forward residents and youth.</p>
+                  <p><strong>Highlights:</strong></p>
+                  <ul>
+                    <li>Wide range of national and international shoes</li>
+                    <li>Fashion accessories and watch galleries</li>
+                    <li>Organized, easy-to-navigate layout</li>
+                    <li>Hub for festive season discounts</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patna Market -->
+          <div class="col-lg-4 col-md-6 mb-5">
+            <div class="card h-100">
+              <span class="card-badge">Vibe Check</span>
+              <div class="card-img-wrapper">
+                <img src="images/shopping.jpg" class="card-img-top" alt="Patna Market">
+              </div>
+              <div class="card-body">
+                <div class="card-label">Ashok Rajpath</div>
+                <h5 class="card-title">Patna Market</h5>
+                <div class="card-info-row">
+                  <div class="card-info-item"><i class="fas fa-bag-shopping"></i> Street Style</div>
+                  <div class="card-info-item"><i class="fas fa-clock"></i> Historic</div>
+                </div>
+                <div class="short-text">
+                  <p class="card-text">The oldest organized market in Patna, maintaining its charm with narrow lanes and unique finds...</p>
+                </div>
+                <div class="full-text">
+                  <p>Patna Market is the soul of the old city's commercial life, offering everything from jewelry to electronic gadgets in a vibrant atmosphere.</p>
+                  <p><strong>Offerings:</strong></p>
+                  <ul>
+                    <li>Handicrafts and glass bangles</li>
+                    <li>Affordable footwear and bags</li>
+                    <li>Traditional book depots</li>
+                    <li>Iconic local snack shops nearby</li>
+                  </ul>
+                </div>
+                <button class="read-more-btn mt-auto">Shop Details <i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="container contact-wrapper">
+        <div class="section-header">
+          <span class="section-badge text-white" style="background: rgba(255,255,255,0.1);">Connect</span>
+          <h2 class="section-title text-white">The Premium Hub</h2>
+        </div>
+        
+        <div class="row pt-5">
+          <div class="col-lg-7 mb-5">
+            <div class="contact-card">
+              <h3 class="font-weight-bold mb-4">Send a Message</h3>
+              <p class="text-white-50 mb-5">Have a question or planning a visit? Our experts are here to help you navigate the heart of Bihar.</p>
+              
+              <form id="contactForm">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <label class="contact-label">Your Name</label>
+                    <input type="text" class="contact-input" placeholder="Abhishek Kumar" required>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <label class="contact-label">Email Address</label>
+                    <input type="email" class="contact-input" placeholder="name@domain.com" required>
+                  </div>
+                </div>
+                <div class="mb-5">
+                  <label class="contact-label">Your Inquiry</label>
+                  <textarea class="contact-input" rows="5" placeholder="How can we assist your journey?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                  Dispatch Message <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="col-lg-5 mb-5">
+            <div class="contact-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="font-weight-bold mb-4">Visit Our Base</h3>
+                <div class="rounded-lg overflow-hidden mb-4 shadow-lg" style="height: 200px; border: 1px solid rgba(255,255,255,0.1);">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14334.754865185017!2d85.12008245!3d25.5940945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed582d08aab58d%3A0x3806c10d1a5c5e72!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1617266375684!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div class="contact-info mt-4">
+                  <div class="d-flex align-items-center mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.03);">
+                    <div class="bg-primary p-3 rounded-circle mr-3">
+                      <i class="fas fa-location-dot"></i>
+                    </div>
+                    <div>
+                      <div class="small text-uppercase opacity-50 font-weight-bold">Location</div>
+                      <div class="font-weight-bold">Patna Junction, Bihar, India</div>
+                    </div>
+                  </div>
+                  
+                  <div class="d-flex align-items-center mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.03);">
+                    <div class="bg-accent p-3 rounded-circle mr-3">
+                      <i class="fas fa-headset"></i>
+                    </div>
+                    <div>
+                      <div class="small text-uppercase opacity-50 font-weight-bold">Helpline</div>
+                      <div class="font-weight-bold">+91 7631821416</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h4 class="font-weight-bold mb-3">Join the Community</h4>
+                <div class="social-hub">
+                  <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-btn"><i class="fab fa-x-twitter"></i></a>
+                  <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-5 pt-5 pb-3">
+          <p class="text-white-50" style="letter-spacing: 2px;">Designed with &hearts; for Patna by <span class="text-white font-weight-bold">Abhishek Kumar</span></p>
+          <div class="opacity-30 small">© 2026 EXPLORE PATNA • ALL RIGHTS RESERVED</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal fade" id="itemModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title font-weight-bold" id="modalTitle">DISCOVER MORE</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <img id="modalImage" src="" alt="" class="img-fluid w-100">
+            </div>
+            <div class="col-lg-6">
+              <div id="modalDescription" class="prose"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary px-5 rounded-pill" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <!-- Vishwa AI Concierge -->
+  <div class="vishwa-trigger" id="vishwa-toggle" title="Ask Vishwa Anything">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+  
+  <div class="vishwa-chat" id="vishwa-chat-box">
+    <div class="vishwa-header">
+      <div class="vishwa-avatar">
+        <i class="fas fa-robot fa-2x"></i>
+      </div>
+      <div>
+        <h5 class="mb-0 font-weight-bold">VISHWA</h5>
+        <span class="smallest">Virtual Heritage Assistant</span>
+      </div>
+      <div class="ml-auto" style="cursor: pointer;" id="vishwa-close">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <div class="vishwa-body" id="vishwa-messages">
+      <div class="message received mb-3">
+        <div class="p-3 glass-morphism rounded-lg small">
+          Namaste! I am <strong>Vishwa</strong>, your digital guide to Patna's 2,500-year legacy. How can I help you today?
+        </div>
+      </div>
+    </div>
+    <div class="vishwa-footer">
+      <input type="text" class="form-control border-0 rounded-pill px-4 bg-light" placeholder="Ask about landmarks, food..." id="vishwa-input">
+      <button class="btn btn-primary rounded-circle" id="vishwa-send">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const icon = themeToggle.querySelector('i');
+
+    // Check for saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+      } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+      }
+    }
+
+    // Tikuli Cursor Logic
+    const cursor = document.getElementById('tikuli-cursor');
+    const follower = document.getElementById('tikuli-cursor-follower');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+      follower.style.transform = `translate3d(${e.clientX - 4}px, ${e.clientY - 4}px, 0)`;
+    });
+
+    // Cursor Interactions
+    const interactiveElements = document.querySelectorAll('a, button, .card, .tab-link, .theme-toggle');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform += ' scale(2)';
+        cursor.style.backgroundColor = 'var(--primary)';
+        cursor.style.mixBlendMode = 'normal';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = cursor.style.transform.replace(' scale(2)', '');
+        cursor.style.backgroundColor = 'var(--tikuli-gold)';
+        cursor.style.mixBlendMode = 'difference';
+      });
+    });
+
+    // Hide preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('preloader').style.display = 'none';
+        }, 1000);
+      }, 2000);
+    });
+
+    // Real-time Clock
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-IN', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      document.getElementById('live-clock').textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Festival Countdown (Example for Chhath Puja)
+    function updateCountdown() {
+      const eventDate = new Date('November 15, 2026 00:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      const countdownEl = document.getElementById('festival-countdown');
+      countdownEl.querySelector('.days').textContent = days;
+      countdownEl.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+      countdownEl.querySelector('.minutes').textContent = minutes.toString().padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000 * 60);
+    updateCountdown();
+
+    // Vibe Quiz Logic
+    function selectVibe(vibe) {
+      const container = document.getElementById('vibe-quiz-container');
+      let result = "";
+      
+      if(vibe === 'spiritual') result = "<strong>The Divine Path:</strong> Start at Mahavir Mandir, then visit Patan Devi and end with evening Aarti at Gandhi Ghat.";
+      if(vibe === 'historical') result = "<strong>The Imperial Trail:</strong> Explore the Bihar Museum, then Golghar, and finally the ruins of Kumhrar.";
+      if(vibe === 'foodie') result = "<strong>The Flavor Hub:</strong> Begin with Litti Chokha at Maurya Lok, then Tilkut in local markets, and dinner at a rooftop Ganga-view cafe.";
+      if(vibe === 'explorer') result = "<strong>Modern Pulse:</strong> Visit Eco Park, then do some shopping at P&M Mall and walk along the Marine Drive (JP Ganga Path).";
+      
+      container.innerHTML = `
+        <div class="text-center py-4 animate__animated animate__fadeIn">
+          <i class="fas fa-wand-magic-sparkles fa-3x text-primary mb-4"></i>
+          <h3 class="font-weight-bold mb-3">Your Vibe Found!</h3>
+          <p class="lead mb-4">${result}</p>
+          <button class="btn btn-primary rounded-pill px-5" onclick="location.reload()">Take Quiz Again</button>
+        </div>
+      `;
+    }
+
+    // Vishwa AI Concierge Logic
+    const vishwaToggle = document.getElementById('vishwa-toggle');
+    const vishwaChat = document.getElementById('vishwa-chat-box');
+    const vishwaClose = document.getElementById('vishwa-close');
+    const vishwaInput = document.getElementById('vishwa-input');
+    const vishwaSend = document.getElementById('vishwa-send');
+    const vishwaMessages = document.getElementById('vishwa-messages');
+
+    vishwaToggle.addEventListener('click', () => {
+      vishwaChat.style.display = vishwaChat.style.display === 'flex' ? 'none' : 'flex';
+      vishwaInput.focus();
+    });
+
+    vishwaClose.addEventListener('click', () => {
+      vishwaChat.style.display = 'none';
+    });
+
+    function addVishwaMessage(text, isUser = false) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${isUser ? 'sent text-right' : 'received'} mb-3`;
+      msgDiv.innerHTML = `
+        <div class="p-3 ${isUser ? 'bg-primary text-white' : 'glass-morphism'} rounded-lg small d-inline-block" style="max-width: 80%;">
+          ${text}
+        </div>
+      `;
+      vishwaMessages.appendChild(msgDiv);
+      vishwaMessages.scrollTop = vishwaMessages.scrollHeight;
+    }
+
+    vishwaSend.addEventListener('click', () => {
+      const text = vishwaInput.value.trim();
+      if(!text) return;
+      
+      addVishwaMessage(text, true);
+      vishwaInput.value = '';
+      
+      // Mock AI response
+      setTimeout(() => {
+        let response = "That's a great question about Patna! I would recommend visiting the Bihar Museum for an in-depth answer or exploring our 'Historical' section.";
+        if(text.toLowerCase().includes('food')) response = "Ah, the flavors of Patna! You MUST try Litti Chokha near Gandhi Maidan or the Tilkut from Gaya stores.";
+        if(text.toLowerCase().includes('dark')) response = "You've already found the Cinematic Dark Mode! Use the moon/sun icon in the top navigation to switch.";
+        
+        addVishwaMessage(response);
+      }, 1000);
+    });
+
+    vishwaInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') vishwaSend.click();
+    });
+  </script>
+</body>
+</html>
