@@ -1,741 +1,293 @@
-/**
- * Explore Patna — Master Script v2.0
- * All interactivity consolidated + new features:
- * - Reading progress bar
- * - Floating action button menu
- * - Search overlay with live filtering
- * - Typewriter hero effect
- * - URL hash routing
- * - Keyboard shortcuts
- * - Parallax card tilt
- * - Explorer badge / gamification system
- * - Image error handling
- * - Enhanced Vishwa AI (15+ patterns)
- */
+document.documentElement.classList.add("js");
 
-document.addEventListener("DOMContentLoaded", function () {
+const CATEGORY_META = {
+  spiritual: {
+    title: "Spiritual Patna",
+    label: "Temples and faith",
+    intro: "Temples, shrines, old-city prayer spaces and river rituals that shape Patna's everyday devotion.",
+    file: "spiritual.html"
+  },
+  heritage: {
+    title: "Heritage Patna",
+    label: "History and museums",
+    intro: "Ancient Pataliputra, museums, public landmarks and civic memory points across the city.",
+    file: "heritage.html"
+  },
+  food: {
+    title: "Patna Food",
+    label: "Food and sweets",
+    intro: "Litti chokha, sattu, thekua, khaja, tilkut and the street snacks that make Patna taste local.",
+    file: "food.html"
+  },
+  culture: {
+    title: "Patna Culture",
+    label: "Festivals and crafts",
+    intro: "Chhath, Durga Puja, folk art, fairs and the living traditions that bring the city together.",
+    file: "culture.html"
+  },
+  leisure: {
+    title: "Leisure Patna",
+    label: "Ghats and recreation",
+    intro: "Riverfront drives, ghats, parks, family outings, planetarium shows, water parks and green breaks.",
+    file: "leisure.html"
+  },
+  shopping: {
+    title: "Shopping Patna",
+    label: "Markets and malls",
+    intro: "Classic bazaars, old-city markets, mall stops and everyday shopping places across Patna.",
+    file: "shopping.html"
+  },
+  trip: {
+    title: "Trips From Patna",
+    label: "Nearby heritage trips",
+    intro: "Nalanda, Rajgir, Bodh Gaya, Vaishali, Pawapuri and Kesaria for full-day heritage routes.",
+    file: "trips.html"
+  }
+};
 
-    // ═══════════════════════════════════════════════════
-    // 1. TOUCH DEVICE DETECTION
-    // ═══════════════════════════════════════════════════
-    const isTouchDevice = window.matchMedia('(hover: none)').matches
-                          || 'ontouchstart' in window;
+function escapeHtml(value = "") {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;"
+  }[char]));
+}
 
-    if (isTouchDevice) {
-        const cursor = document.getElementById('tikuli-cursor');
-        const follower = document.getElementById('tikuli-cursor-follower');
-        if (cursor) cursor.remove();
-        if (follower) follower.remove();
-        document.body.style.cursor = 'auto';
-        document.querySelectorAll('a, button, .card, .tab-link, .theme-toggle').forEach(el => {
-            el.style.cursor = 'pointer';
-        });
-    }
+function categoryFile(category) {
+  return CATEGORY_META[category]?.file || "index.html#famous";
+}
 
-    // ═══════════════════════════════════════════════════
-    // 2. PRELOADER
-    // ═══════════════════════════════════════════════════
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 1000);
-            }, 1500);
-        });
-    }
+function detailHref(item) {
+  return `detail.html?item=${encodeURIComponent(item.id)}`;
+}
 
-    // ═══════════════════════════════════════════════════
-    // 3. READING PROGRESS BAR
-    // ═══════════════════════════════════════════════════
-    const progressBar = document.querySelector('.reading-progress');
-    if (progressBar) {
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progressBar.style.width = pct + '%';
-        });
-    }
+function cardMarkup(item) {
+  const details = item.details.map((detail) => `
+    <div><strong>${escapeHtml(detail.label)}</strong><span>${detail.value}</span></div>
+  `).join("");
 
-    // ═══════════════════════════════════════════════════
-    // 4. NAVBAR SCROLL EFFECT
-    // ═══════════════════════════════════════════════════
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 100);
-        });
-    }
+  return `
+    <article class="patna-card reveal" data-category="${escapeHtml(item.categories.join(" "))}" data-card-link="${detailHref(item)}" role="link" tabindex="0" aria-label="Open ${escapeHtml(item.title)} details">
+      <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt)}">
+      <div class="card-body">
+        <p class="card-type">${escapeHtml(item.type)}</p>
+        <h3>${escapeHtml(item.title)}</h3>
+        <p>${escapeHtml(item.description)}</p>
+        <div class="detail-list">${details}</div>
+        <a class="card-open" href="${detailHref(item)}">Open full details</a>
+      </div>
+    </article>
+  `;
+}
 
-    // ═══════════════════════════════════════════════════
-    // 5. THEME TOGGLE
-    // ═══════════════════════════════════════════════════
-    const themeToggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+function cardsForScope(scope) {
+  const cards = window.PATNA_CARDS || [];
+  if (!scope || scope === "all") return cards;
+  return cards.filter((item) => item.categories.includes(scope));
+}
 
-    if (themeToggle) {
-        const icon = themeToggle.querySelector('i');
-        updateThemeIcon(savedTheme);
+function renderCardGrids() {
+  document.querySelectorAll("[data-card-grid]").forEach((grid) => {
+    const scope = grid.dataset.cardScope || "all";
+    const items = cardsForScope(scope);
+    grid.innerHTML = items.map(cardMarkup).join("");
+  });
+}
 
-        themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon(next);
-            awardBadge('dark_mode');
-        });
-
-        themeToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); themeToggle.click(); }
-        });
-
-        function updateThemeIcon(theme) {
-            if (!icon) return;
-            icon.classList.toggle('fa-moon', theme === 'light');
-            icon.classList.toggle('fa-sun', theme === 'dark');
-        }
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 6. TIKULI CURSOR (Desktop Only)
-    // ═══════════════════════════════════════════════════
-    if (!isTouchDevice) {
-        const cursor = document.getElementById('tikuli-cursor');
-        const follower = document.getElementById('tikuli-cursor-follower');
-
-        if (cursor && follower) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
-                follower.style.transform = `translate3d(${e.clientX - 4}px, ${e.clientY - 4}px, 0)`;
-            });
-
-            document.querySelectorAll('a, button, .card, .tab-link, .theme-toggle').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.width = '44px';
-                    cursor.style.height = '44px';
-                    cursor.style.backgroundColor = 'var(--primary)';
-                    cursor.style.mixBlendMode = 'normal';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.width = '';
-                    cursor.style.height = '';
-                    cursor.style.backgroundColor = '';
-                    cursor.style.mixBlendMode = 'difference';
-                });
-            });
-        }
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 7. DETAIL MODAL — Dynamic Content Injection
-    // ═══════════════════════════════════════════════════
-    const itemModal = (typeof $ !== 'undefined') ? $('#itemModal') : null;
-
-    document.querySelectorAll('.card').forEach(card => {
-        const readMoreBtn = card.querySelector('.read-more-btn');
-        if (readMoreBtn && !readMoreBtn.closest('a')) {
-            readMoreBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const title = card.querySelector('.card-title')?.textContent || '';
-                const imageSrc = card.querySelector('.card-img-top')?.src || '';
-                const fullDescriptionData = card.querySelector('.full-text');
-                let content = fullDescriptionData ? fullDescriptionData.innerHTML
-                    : `<p class="lead">${card.querySelector('.card-text')?.textContent || ''}</p>`;
-
-                const modalTitle = document.getElementById('modalTitle');
-                const modalImage = document.getElementById('modalImage');
-                const modalDescription = document.getElementById('modalDescription');
-
-                if (modalTitle) modalTitle.textContent = title.toUpperCase();
-                if (modalImage) { modalImage.src = imageSrc; modalImage.alt = title; }
-                if (modalDescription) {
-                    modalDescription.innerHTML = `
-                        <div class="pe-lg-4">
-                            <div class="section-badge mb-3">Discovery</div>
-                            <h2 class="font-weight-bold mb-4" style="color: var(--secondary);">${title}</h2>
-                            ${content}
-                        </div>
-                    `;
-                }
-                if (itemModal) itemModal.modal('show');
-            });
-        }
+function setupOpenableCards() {
+  document.querySelectorAll("[data-card-link]").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) return;
+      window.location.href = card.dataset.cardLink;
     });
 
-    // ═══════════════════════════════════════════════════
-    // 8. TAB NAVIGATION — Fixed with Bootstrap events
-    // ═══════════════════════════════════════════════════
-    if (typeof $ !== 'undefined') {
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Update URL hash without jumping
-            history.replaceState(null, null, e.target.getAttribute('href'));
-            // Track tabs visited for badges
-            trackTabVisit(e.target.getAttribute('href'));
-        });
-    }
-
-    // Hero tab-links (not Bootstrap data-toggle on some)
-    document.querySelectorAll('.tab-link[data-toggle="tab"]').forEach(link => {
-        link.addEventListener('click', () => {
-            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-        });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      window.location.href = card.dataset.cardLink;
     });
+  });
+}
 
-    // ═══════════════════════════════════════════════════
-    // 9. URL HASH ROUTING — Deep link to tabs
-    // ═══════════════════════════════════════════════════
-    const hash = window.location.hash;
-    if (hash && typeof $ !== 'undefined') {
-        const tabLink = document.querySelector(`.nav-link[href="${hash}"]`);
-        if (tabLink) {
-            $(tabLink).tab('show');
-        }
-    }
+function setupFilters() {
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  const cards = document.querySelectorAll(".patna-card");
 
-    // ═══════════════════════════════════════════════════
-    // 10. CONTACT FORM HANDLING
-    // ═══════════════════════════════════════════════════
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const btn = this.querySelector('.submit-btn');
-            if (!btn) return;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
-            btn.disabled = true;
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                btn.classList.add('btn-success');
-                alert("Your message has been securely dispatched to our Hub. We'll connect soon.");
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    btn.classList.remove('btn-success');
-                    contactForm.reset();
-                }, 3000);
-            }, 2000);
-        });
-    }
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter || "all";
 
-    // ═══════════════════════════════════════════════════
-    // 11. SCROLL INDICATOR
-    // ═══════════════════════════════════════════════════
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            document.querySelector('.city-pulse-section')?.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
+      filterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
 
-    // ═══════════════════════════════════════════════════
-    // 12. LIVE CLOCK
-    // ═══════════════════════════════════════════════════
-    const clockEl = document.getElementById('live-clock');
-    if (clockEl) {
-        function updateClock() {
-            clockEl.textContent = new Date().toLocaleTimeString('en-IN', {
-                hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
-            });
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 13. FESTIVAL COUNTDOWN (Dynamic)
-    // ═══════════════════════════════════════════════════
-    const countdownEl = document.getElementById('festival-countdown');
-    if (countdownEl) {
-        const festivals = [
-            { name: 'Chhath Puja 2026', date: 'November 15, 2026' },
-            { name: 'Makar Sankranti 2027', date: 'January 14, 2027' },
-            { name: 'Holi 2027', date: 'March 14, 2027' },
-            { name: 'Ram Navami 2027', date: 'April 5, 2027' },
-            { name: 'Chhath Puja 2027', date: 'November 4, 2027' },
-        ];
-        function updateCountdown() {
-            const now = Date.now();
-            const next = festivals.find(f => new Date(f.date).getTime() > now);
-            if (!next) return;
-            const diff = new Date(next.date).getTime() - now;
-            const nameEl = document.querySelector('.event-name');
-            if (nameEl) nameEl.textContent = next.name;
-            const d = countdownEl.querySelector('.days');
-            const h = countdownEl.querySelector('.hours');
-            const m = countdownEl.querySelector('.minutes');
-            if (d) d.textContent = Math.floor(diff / 86400000);
-            if (h) h.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-            if (m) m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-        }
-        setInterval(updateCountdown, 60000);
-        updateCountdown();
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 14. VIBE QUIZ
-    // ═══════════════════════════════════════════════════
-    window.selectVibe = function(vibe) {
-        const container = document.getElementById('vibe-quiz-container');
-        if (!container) return;
-        const results = {
-            spiritual: "<strong>The Divine Path:</strong> Start at Mahavir Mandir, then visit Patan Devi and end with evening Aarti at Gandhi Ghat.",
-            historical: "<strong>The Imperial Trail:</strong> Explore the Bihar Museum, then Golghar, and finally the ruins of Kumhrar.",
-            foodie: "<strong>The Flavor Hub:</strong> Begin with Litti Chokha at Maurya Lok, then Tilkut in local markets, and dinner at a rooftop Ganga-view cafe.",
-            explorer: "<strong>Modern Pulse:</strong> Visit Eco Park, then do some shopping at P&M Mall and walk along the Marine Drive (JP Ganga Path)."
-        };
-        container.innerHTML = `
-            <div class="text-center py-4">
-                <i class="fas fa-wand-magic-sparkles fa-3x text-primary mb-4"></i>
-                <h3 class="font-weight-bold mb-3">Your Vibe Found!</h3>
-                <p class="lead mb-4">${results[vibe] || 'Explore all sections above!'}</p>
-                <button class="btn btn-primary rounded-pill px-5" onclick="location.reload()">Take Quiz Again</button>
-            </div>
-        `;
-        awardBadge('vibe_quiz');
-    };
-
-    // ═══════════════════════════════════════════════════
-    // 15. VISHWA AI CONCIERGE (Enhanced - 15+ patterns)
-    // ═══════════════════════════════════════════════════
-    const vishwaToggle = document.getElementById('vishwa-toggle');
-    const vishwaChat = document.getElementById('vishwa-chat-box');
-    const vishwaClose = document.getElementById('vishwa-close');
-    const vishwaInput = document.getElementById('vishwa-input');
-    const vishwaSend = document.getElementById('vishwa-send');
-    const vishwaMessages = document.getElementById('vishwa-messages');
-
-    if (vishwaToggle && vishwaChat) {
-        // The vishwa-toggle is now inside the FAB, handled by FAB logic
-        // But keep direct toggle as fallback
-        if (!document.querySelector('.fab-container')) {
-            vishwaToggle.addEventListener('click', () => {
-                vishwaChat.style.display = vishwaChat.style.display === 'flex' ? 'none' : 'flex';
-                if (vishwaInput) vishwaInput.focus();
-            });
-        }
-
-        vishwaToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vishwaToggle.click(); }
-        });
-
-        if (vishwaClose) {
-            vishwaClose.addEventListener('click', () => { vishwaChat.style.display = 'none'; });
-        }
-
-        function addVishwaMessage(text, isUser = false) {
-            if (!vishwaMessages) return;
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${isUser ? 'sent text-right' : 'received'} mb-3`;
-            msgDiv.innerHTML = `<div class="p-3 ${isUser ? 'bg-primary text-white' : 'glass-morphism'} rounded-lg small d-inline-block" style="max-width: 80%;">${text}</div>`;
-            vishwaMessages.appendChild(msgDiv);
-            vishwaMessages.scrollTop = vishwaMessages.scrollHeight;
-        }
-
-        function getVishwaResponse(text) {
-            const l = text.toLowerCase();
-            if (l.includes('food') || l.includes('eat') || l.includes('restaurant') || l.includes('hungry'))
-                return "🍽️ Food is Patna's love language! Try <strong>Litti Chokha</strong> near Gandhi Maidan, <strong>Silao Khaja</strong>, <strong>Malpua with Rabri</strong>, and <strong>Sattu Paratha</strong>. Head to <strong>Boring Road</strong> or <strong>Maurya Lok</strong>!";
-            if (l.includes('temple') || l.includes('spiritual') || l.includes('mandir'))
-                return "🙏 Visit <strong>Mahavir Mandir</strong> (5 AM–11 PM), <strong>Patan Devi</strong>, <strong>ISKCON</strong>, and <strong>Takht Shri Patna Sahib</strong>. Check the Spiritual tab!";
-            if (l.includes('museum') || l.includes('history') || l.includes('historical'))
-                return "🏛️ Explore <strong>Bihar Museum</strong> (₹100), <strong>Patna Museum</strong> (50,000+ artifacts), <strong>Golghar</strong> (145 steps, ₹15), and <strong>Agam Kuan</strong>. Check Historical tab!";
-            if (l.includes('weather') || l.includes('climate') || l.includes('when'))
-                return "🌤️ <strong>Best: Oct–Mar</strong> (15–25°C). Summers hit 45°C. Monsoon brings heavy rain. Winter mornings can be foggy.";
-            if (l.includes('hotel') || l.includes('stay') || l.includes('accommodation'))
-                return "🏨 Stay at <strong>Fraser Road</strong> (upscale), <strong>Exhibition Road</strong> (budget), or <strong>Boring Road</strong> (local). Top: Maurya Patna, Lemon Tree, Chanakya.";
-            if (l.includes('transport') || l.includes('airport') || l.includes('train'))
-                return "✈️ <strong>JP Airport</strong> connects to metros. <strong>Patna Junction</strong> is a rail hub. Use Ola/Uber, autos (₹20–80), or city buses.";
-            if (l.includes('chhath') || l.includes('festival') || l.includes('event'))
-                return "🎉 <strong>Chhath Puja</strong> (Nov) is the grandest! Also: <strong>Sonepur Mela</strong>, <strong>Ram Navami</strong>, <strong>Holi</strong>, <strong>Diwali</strong>.";
-            if (l.includes('ganga') || l.includes('river') || l.includes('ghat'))
-                return "🌊 <strong>JP Ganga Path</strong> — 5 km promenade for sunsets. Key ghats: <strong>Gandhi Ghat</strong>, <strong>NIT Ghat</strong>.";
-            if (l.includes('shopping') || l.includes('mall') || l.includes('market'))
-                return "🛍️ <strong>City Centre</strong> (Fraser Rd), <strong>P&M Mall</strong>, <strong>Maurya Lok</strong>, <strong>Khaitan Market</strong> (ethnic wear).";
-            if (l.includes('dark') || l.includes('theme')) return "🌙 Click the moon/sun icon in navbar to toggle themes!";
-            if (l.includes('zoo') || l.includes('park') || l.includes('family'))
-                return "🎢 Family fun: <strong>Patna Zoo</strong> (₹30), <strong>Eco Park</strong>, <strong>Buddha Smriti</strong>, <strong>Hungama World</strong>. Check Recreation tab!";
-            if (l.includes('planetarium') || l.includes('science'))
-                return "🔭 <strong>Indira Gandhi Planetarium</strong> — 23m dome, 278 seats, ₹40. Shows every 1.5 hrs, closed Mondays.";
-            if (l.match(/\b(hi|hello|hey|namaste|hii+)\b/))
-                return "🙏 <strong>Namaste!</strong> I'm Vishwa, your guide to Patna's 2,500-year legacy. Ask about places, food, festivals, hotels, or transport!";
-            if (l.includes('thank')) return "🙏 Happy to help! Explore all tabs for hidden gems. Happy travelling! 🌟";
-            return "Great question! Check our tabs — <strong>Spiritual, Historical, Foods, Culture, Recreation, Shopping</strong>. Ask me about food, temples, weather, hotels, or festivals!";
-        }
-
-        if (vishwaSend) {
-            vishwaSend.addEventListener('click', () => {
-                const text = vishwaInput?.value.trim();
-                if (!text) return;
-                addVishwaMessage(text, true);
-                vishwaInput.value = '';
-                awardBadge('vishwa_chat');
-                setTimeout(() => addVishwaMessage(getVishwaResponse(text)), 700 + Math.random() * 500);
-            });
-        }
-        if (vishwaInput) {
-            vishwaInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') vishwaSend?.click(); });
-        }
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 16. FLOATING ACTION BUTTON MENU
-    // ═══════════════════════════════════════════════════
-    const fabContainer = document.querySelector('.fab-container');
-    const fabMain = document.querySelector('.fab-main');
-
-    if (fabMain && fabContainer) {
-        fabMain.addEventListener('click', () => {
-            fabContainer.classList.toggle('open');
-            fabMain.classList.toggle('active');
-        });
-
-        // Close FAB when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!fabContainer.contains(e.target) && fabContainer.classList.contains('open')) {
-                fabContainer.classList.remove('open');
-                fabMain.classList.remove('active');
-            }
-        });
-    }
-
-    // FAB: Vishwa chat trigger
-    const fabVishwa = document.getElementById('fab-vishwa');
-    if (fabVishwa && vishwaChat) {
-        fabVishwa.addEventListener('click', () => {
-            vishwaChat.style.display = vishwaChat.style.display === 'flex' ? 'none' : 'flex';
-            if (vishwaInput) vishwaInput.focus();
-            fabContainer?.classList.remove('open');
-            fabMain?.classList.remove('active');
-        });
-    }
-
-    // FAB: Back to top
-    const fabTop = document.getElementById('fab-top');
-    if (fabTop) {
-        fabTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            fabContainer?.classList.remove('open');
-            fabMain?.classList.remove('active');
-        });
-    }
-
-    // FAB: Print
-    const fabPrint = document.getElementById('fab-print');
-    if (fabPrint) {
-        fabPrint.addEventListener('click', () => {
-            fabContainer?.classList.remove('open');
-            fabMain?.classList.remove('active');
-            window.print();
-        });
-    }
-
-    // FAB: Search
-    const fabSearch = document.getElementById('fab-search');
-    const searchOverlay = document.getElementById('search-overlay');
-    const searchInput = document.getElementById('search-input');
-    const searchClose = document.getElementById('search-close');
-
-    if (fabSearch && searchOverlay) {
-        fabSearch.addEventListener('click', () => {
-            searchOverlay.classList.add('active');
-            fabContainer?.classList.remove('open');
-            fabMain?.classList.remove('active');
-            setTimeout(() => searchInput?.focus(), 200);
-        });
-    }
-    if (searchClose) {
-        searchClose.addEventListener('click', () => searchOverlay?.classList.remove('active'));
-    }
-    if (searchOverlay) {
-        searchOverlay.addEventListener('click', (e) => {
-            if (e.target === searchOverlay) searchOverlay.classList.remove('active');
-        });
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 17. SEARCH — Live card filtering
-    // ═══════════════════════════════════════════════════
-    if (searchInput) {
-        const searchResults = document.getElementById('search-results');
-
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.trim().toLowerCase();
-            if (!searchResults) return;
-
-            if (query.length < 2) {
-                searchResults.innerHTML = '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px;">Type at least 2 characters...</p>';
-                return;
-            }
-
-            const cards = document.querySelectorAll('.card');
-            let results = [];
-
-            cards.forEach(card => {
-                const title = card.querySelector('.card-title')?.textContent || '';
-                const text = card.querySelector('.card-text')?.textContent || '';
-                const label = card.querySelector('.card-label')?.textContent || '';
-                const combined = (title + ' ' + text + ' ' + label).toLowerCase();
-
-                if (combined.includes(query)) {
-                    const img = card.querySelector('.card-img-top')?.src || '';
-                    const tab = card.closest('.tab-pane')?.id || 'home';
-                    results.push({ title, label, img, tab });
-                }
-            });
-
-            if (results.length === 0) {
-                searchResults.innerHTML = '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px;">No results found</p>';
-                return;
-            }
-
-            searchResults.innerHTML = results.slice(0, 8).map(r => `
-                <div class="search-result-item" data-tab="${r.tab}">
-                    ${r.img ? `<img src="${r.img}" alt="${r.title}" loading="lazy">` : ''}
-                    <div class="result-info">
-                        <h5>${r.title}</h5>
-                        <p>${r.label || r.tab}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            // Click result → go to that tab
-            searchResults.querySelectorAll('.search-result-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const tab = item.dataset.tab;
-                    const tabLink = document.querySelector(`.nav-link[href="#${tab}"]`);
-                    if (tabLink && typeof $ !== 'undefined') {
-                        $(tabLink).tab('show');
-                    }
-                    searchOverlay.classList.remove('active');
-                    searchInput.value = '';
-                });
-            });
-        });
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 18. TYPEWRITER HERO EFFECT
-    // ═══════════════════════════════════════════════════
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) {
-        const phrases = [
-            'Chronicles of 2,500 Years',
-            'Vibrant Traditions & Heritage',
-            'The Bihari Kitchen Awaits',
-            'Modern Pulse of Bihar',
-            'The Eternal City Since 490 BCE'
-        ];
-        let phraseIndex = 0, charIndex = 0, isDeleting = false;
-
-        // Add cursor element
-        const cursorSpan = document.createElement('span');
-        cursorSpan.className = 'typewriter-cursor';
-        heroSubtitle.parentNode.insertBefore(cursorSpan, heroSubtitle.nextSibling);
-
-        function typewrite() {
-            const current = phrases[phraseIndex];
-            heroSubtitle.textContent = current.substring(0, charIndex);
-
-            if (!isDeleting && charIndex === current.length) {
-                setTimeout(() => { isDeleting = true; typewrite(); }, 2500);
-                return;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(typewrite, 400);
-                return;
-            }
-
-            charIndex += isDeleting ? -1 : 1;
-            setTimeout(typewrite, isDeleting ? 25 : 70);
-        }
-
-        // Start typewriter after preloader
-        setTimeout(typewrite, 3500);
-    }
-
-    // ═══════════════════════════════════════════════════
-    // 19. KEYBOARD SHORTCUTS
-    // ═══════════════════════════════════════════════════
-    document.addEventListener('keydown', (e) => {
-        // Don't trigger when typing in inputs
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
-        if (e.altKey && typeof $ !== 'undefined') {
-            const keyMap = {
-                '1': '#home-tab', '2': '#spiritual-tab', '3': '#historical-tab',
-                '4': '#foods-tab', '5': '#cultural-tab', '6': '#recreation-tab',
-                '7': '#shopping-tab', '8': '#contact-tab'
-            };
-            const target = keyMap[e.key];
-            if (target) {
-                e.preventDefault();
-                const tab = document.querySelector(target);
-                if (tab) $(tab).tab('show');
-            }
-        }
-
-        // Ctrl/Cmd + K for search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            if (searchOverlay) {
-                searchOverlay.classList.add('active');
-                setTimeout(() => searchInput?.focus(), 200);
-            }
-        }
-
-        // Escape to close overlays
-        if (e.key === 'Escape') {
-            searchOverlay?.classList.remove('active');
-            if (vishwaChat) vishwaChat.style.display = 'none';
-            fabContainer?.classList.remove('open');
-            fabMain?.classList.remove('active');
-        }
+      cards.forEach((card) => {
+        const categories = (card.dataset.category || "").split(" ");
+        const shouldShow = filter === "all" || categories.includes(filter);
+        card.classList.toggle("is-hidden", !shouldShow);
+      });
     });
+  });
+}
 
-    // ═══════════════════════════════════════════════════
-    // 20. PARALLAX CARD TILT (Desktop Only)
-    // ═══════════════════════════════════════════════════
-    if (!isTouchDevice) {
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
-                const y = ((e.clientY - rect.top) / rect.height - 0.5) * -6;
-                card.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${y}deg) translateY(-8px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-        });
-    }
+function setupReveal() {
+  const revealItems = document.querySelectorAll(".reveal");
 
-    // ═══════════════════════════════════════════════════
-    // 21. IMAGE ERROR HANDLING
-    // ═══════════════════════════════════════════════════
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', () => {
-            img.style.background = 'linear-gradient(135deg, var(--primary-glow), var(--bg-warm))';
-            img.style.minHeight = '200px';
-            img.alt = 'Image unavailable';
-            img.classList.add('img-error');
-        });
-    });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
 
-    // ═══════════════════════════════════════════════════
-    // 22. LAZY LOADING — Auto-apply
-    // ═══════════════════════════════════════════════════
-    document.querySelectorAll('img:not(.loader-logo):not(.logo-img)').forEach(img => {
-        if (!img.hasAttribute('loading')) {
-            img.setAttribute('loading', 'lazy');
-            img.setAttribute('decoding', 'async');
-        }
-    });
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  }
+}
 
-    // ═══════════════════════════════════════════════════
-    // 23. EXPLORER BADGE SYSTEM (Gamification)
-    // ═══════════════════════════════════════════════════
-    const badgeDefs = {
-        first_visit:  { name: 'Welcome Explorer', icon: '🎒', desc: 'First visit to Explore Patna!' },
-        dark_mode:    { name: 'Night Owl', icon: '🦉', desc: 'Toggled Dark Mode' },
-        all_tabs:     { name: 'Grand Tour', icon: '🏆', desc: 'Visited all 8 sections' },
-        vishwa_chat:  { name: 'AI Friend', icon: '🤖', desc: 'Chatted with Vishwa' },
-        vibe_quiz:    { name: 'Vibe Checker', icon: '✨', desc: 'Completed the Vibe Quiz' },
-        scroll_master:{ name: 'Deep Diver', icon: '🤿', desc: 'Scrolled past 80% of the page' },
-    };
+function setupHeader() {
+  const header = document.querySelector("[data-header]");
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("[data-menu]");
 
-    const earnedBadges = JSON.parse(localStorage.getItem('patna_badges') || '[]');
-    const tabsVisited = new Set(JSON.parse(localStorage.getItem('patna_tabs_visited') || '[]'));
+  const setHeaderState = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
 
-    function awardBadge(id) {
-        if (earnedBadges.includes(id) || !badgeDefs[id]) return;
-        earnedBadges.push(id);
-        localStorage.setItem('patna_badges', JSON.stringify(earnedBadges));
+  setHeaderState();
+  window.addEventListener("scroll", setHeaderState, { passive: true });
 
-        const badge = badgeDefs[id];
-        showBadgeNotification(badge.icon, badge.name, badge.desc);
-    }
+  if (!menuToggle || !menu) return;
 
-    function showBadgeNotification(icon, name, desc) {
-        const notif = document.getElementById('badge-notification');
-        if (!notif) return;
+  const closeMenu = () => {
+    menu.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
 
-        notif.querySelector('.badge-icon').textContent = icon;
-        notif.querySelector('.badge-info h5').textContent = name + ' Unlocked!';
-        notif.querySelector('.badge-info p').textContent = desc;
-        notif.classList.add('show');
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("is-open");
+    document.body.classList.toggle("menu-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-        setTimeout(() => notif.classList.remove('show'), 4000);
-    }
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
 
-    function trackTabVisit(tabHash) {
-        if (!tabHash) return;
-        tabsVisited.add(tabHash);
-        localStorage.setItem('patna_tabs_visited', JSON.stringify([...tabsVisited]));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+}
 
-        // Check for all-tabs badge
-        const allTabs = ['#home', '#spiritual', '#historical', '#foods', '#cultural', '#recreation', '#shopping', '#contact'];
-        if (allTabs.every(t => tabsVisited.has(t))) {
-            awardBadge('all_tabs');
-        }
-    }
+function renderCategoryPage() {
+  const category = document.body.dataset.categoryPage;
+  if (!category) return;
 
-    // Award first visit badge
-    if (!localStorage.getItem('patna_visited')) {
-        localStorage.setItem('patna_visited', 'true');
-        setTimeout(() => awardBadge('first_visit'), 4000);
-    }
+  const meta = CATEGORY_META[category];
+  const items = cardsForScope(category);
+  const hero = document.querySelector("[data-category-hero]");
+  const title = document.querySelector("[data-category-title]");
+  const intro = document.querySelector("[data-category-intro]");
+  const count = document.querySelector("[data-category-count]");
+  const firstItem = items[0];
 
-    // Track home tab visit
-    trackTabVisit('#home');
+  if (meta) {
+    document.title = `${meta.title} | Explore Patna`;
+    if (title) title.textContent = meta.title;
+    if (intro) intro.textContent = meta.intro;
+    if (count) count.textContent = `${items.length} detailed cards`;
+  }
 
-    // Scroll depth badge
-    let scrollBadgeAwarded = earnedBadges.includes('scroll_master');
-    if (!scrollBadgeAwarded) {
-        window.addEventListener('scroll', () => {
-            if (scrollBadgeAwarded) return;
-            const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            if (pct > 0.8) {
-                scrollBadgeAwarded = true;
-                awardBadge('scroll_master');
-            }
-        });
-    }
+  if (hero && firstItem) {
+    hero.style.backgroundImage = `linear-gradient(90deg, rgba(23, 21, 18, 0.86), rgba(23, 21, 18, 0.46)), url("${firstItem.image}")`;
+  }
+}
 
-    // Make awardBadge available globally for inline onclick handlers
-    window.awardBadge = awardBadge;
+function renderDetailPage() {
+  const root = document.querySelector("[data-detail-root]");
+  if (!root) return;
 
-    // ═══════════════════════════════════════════════════
-    // 24. SCROLL REVEAL
-    // ═══════════════════════════════════════════════════
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
+  const params = new URLSearchParams(window.location.search);
+  const itemId = params.get("item");
+  const cards = window.PATNA_CARDS || [];
+  const item = cards.find((entry) => entry.id === itemId);
 
-    document.querySelectorAll('.info-card, .tip-card, .feature-list li').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-        revealObserver.observe(el);
-    });
+  if (!item) {
+    root.innerHTML = `
+      <section class="section detail-empty">
+        <div class="section-heading reveal">
+          <p class="kicker">Not found</p>
+          <h1>This Patna card could not be opened.</h1>
+          <p>Return to the homepage and choose another famous place, food, market or trip.</p>
+          <a class="button primary" href="index.html#famous">Back to all cards</a>
+        </div>
+      </section>
+    `;
+    return;
+  }
 
-    // ═══════════════════════════════════════════════════
-    // 25. TOOLTIPS
-    // ═══════════════════════════════════════════════════
-    if (typeof $ !== 'undefined' && $.fn.tooltip) {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
+  const primaryCategory = item.categories[0];
+  const meta = CATEGORY_META[primaryCategory];
+  const related = cards.filter((entry) => entry.id !== item.id && entry.categories.includes(primaryCategory)).slice(0, 3);
+  const details = item.details.map((detail) => `
+    <div><strong>${escapeHtml(detail.label)}</strong><span>${detail.value}</span></div>
+  `).join("");
 
+  document.title = `${item.title} | Explore Patna`;
+  root.innerHTML = `
+    <section class="item-hero reveal">
+      <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt)}">
+      <div class="item-hero-copy">
+        <p class="kicker">${escapeHtml(meta?.label || item.type)}</p>
+        <h1>${escapeHtml(item.title)}</h1>
+        <p>${escapeHtml(item.description)}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="${categoryFile(primaryCategory)}">Back to ${escapeHtml(meta?.label || "category")}</a>
+          <a class="button secondary" href="index.html#famous">All cards</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section detail-content">
+      <div class="detail-panel reveal">
+        <div>
+          <p class="kicker">Full card details</p>
+          <h2>Plan around ${escapeHtml(item.title)}</h2>
+        </div>
+        <div class="detail-list detail-list-large">${details}</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading reveal">
+        <p class="kicker">Keep exploring</p>
+        <h2>More from ${escapeHtml(meta?.label || "Patna")}</h2>
+      </div>
+      <div class="card-grid">${related.map(cardMarkup).join("")}</div>
+    </section>
+  `;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupHeader();
+  renderCategoryPage();
+  renderCardGrids();
+  renderDetailPage();
+  setupOpenableCards();
+  setupFilters();
+  setupReveal();
+
+  document.querySelectorAll(".patna-card img, .mosaic img, .item-hero img").forEach((image) => {
+    image.loading = "lazy";
+    image.decoding = "async";
+  });
 });
